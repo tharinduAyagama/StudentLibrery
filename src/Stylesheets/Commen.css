@@ -1,0 +1,7 @@
+#headdings {
+    -fx-padding: 8;
+    -fx-font-size: 40;
+}
+.button {
+    -fx-padding: 8px;
+}

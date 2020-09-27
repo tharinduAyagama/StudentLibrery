@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="233.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WithdrawController">
+   <children>
+      <Label layoutX="111.0" layoutY="35.0" text="Withdraw">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="103.0" text="NIC Number" />
+      <Button layoutX="127.0" layoutY="152.0" mnemonicParsing="false" text="Withdraw" />
+      <TextField layoutX="137.0" layoutY="99.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="270.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddUserController">
+   <children>
+      <Label layoutX="90.0" layoutY="36.0" text="Add Student">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="103.0" text="NIC Number" />
+      <Label layoutX="36.0" layoutY="149.0" text="Student Name" />
+      <Button layoutX="135.0" layoutY="209.0" mnemonicParsing="false" text="Add" />
+      <TextField layoutX="137.0" layoutY="99.0" />
+      <TextField layoutX="137.0" layoutY="145.0" />
+   </children>
+</AnchorPane>

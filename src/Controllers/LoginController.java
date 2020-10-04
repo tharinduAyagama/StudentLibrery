@@ -34,6 +34,8 @@ public class LoginController extends Application {
             Parent parent = FXMLLoader.load(getClass().getResource("../Interfaces/Dashbord.fxml"));
             Scene sceneDash = new Scene(parent);
             Stage dashStage = new Stage();
+            Stage current = (Stage)userNameBox.getScene().getWindow();
+            current.close();
             dashStage.setScene(sceneDash);
             dashStage.setTitle("Dashbord");
             dashStage.show();

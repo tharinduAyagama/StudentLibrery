@@ -30,7 +30,7 @@ public class LoginController extends Application {
 
     public void loginAction(MouseEvent event) throws Exception {
         Admin.setAdmin(userNameBox.getText() , passwordBox.getText());
-        if(Admin.isAdmin()){
+        if(AdminController.isAdmin()){
             Parent parent = FXMLLoader.load(getClass().getResource("../Interfaces/Dashbord.fxml"));
             Scene sceneDash = new Scene(parent);
             Stage dashStage = new Stage();

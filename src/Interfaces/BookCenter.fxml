@@ -17,8 +17,8 @@
             <HBox alignment="CENTER" prefHeight="70.0" prefWidth="600.0" spacing="50.0">
                <children>
                   <Button mnemonicParsing="false" onMouseClicked="#addBook" text="Add Book" />
-                  <Button mnemonicParsing="false" text="Remove Selected" />
-                  <Button mnemonicParsing="false" text="Withdraw Selected" />
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#delete" text="Remove Selected" />
+                  <Button fx:id="withdrawButton" mnemonicParsing="false" onMouseClicked="#withdrawBook" text="Withdraw Selected" />
                </children>
             </HBox>
          </children>

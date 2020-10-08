@@ -1,23 +1,44 @@
 package Controllers;
 
 import Models.Books;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class BookCenterController {
     @FXML
+    private Button withdrawButton;
+    @FXML
+    private Button deleteButton;
+    @FXML
     private TableView table;
 
+    private static Books selectedBook;
+
+    public static Books getSelectedBook() {
+        return selectedBook;
+    }
+
+    public static void setSelectedBook(Books selectedBook) {
+        BookCenterController.selectedBook = selectedBook;
+    }
+
     public void initialize() throws SQLException {
+        deleteButton.setDisable(true);
+        withdrawButton.setDisable(true);
         table.getColumns().clear();
+        table.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                deleteButton.setDisable(false);
+                withdrawButton.setDisable(false);
+            }
+        });
         TableColumn<Books, Integer> id = new TableColumn("ID");
         TableColumn<Books , String> name = new TableColumn("Name");
         TableColumn<Books , Integer> inCount = new TableColumn("In Count");
@@ -39,11 +60,42 @@ public class BookCenterController {
     }
 
     public void addBook() throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../Interfaces/AddBook.fxml"));
-        Scene addScene = new Scene(parent);
-        Stage addStage = new Stage();
-        addStage.setTitle("Add");
-        addStage.setScene(addScene);
-        addStage.show();
+        StageController.loadStage("../Interfaces/AddBook.fxml" , "Add");
+    }
+
+    public void delete() throws SQLException {
+        if(!table.getSelectionModel().isEmpty()){
+            Books book = (Books) table.getSelectionModel().getSelectedItem();
+            Alert deleteAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            Optional<ButtonType> result = deleteAlert.showAndWait();
+            if(result.get() == ButtonType.OK){
+                deleteRow(book.getBookId());
+            }
+        }
+        else {
+            selectAlert();
+        }
+    }
+
+    private void deleteRow(int bookId) throws SQLException {
+        table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
+        BookController.deleteBook(bookId);
+    }
+
+    public void withdrawBook() throws IOException {
+        if(!table.getSelectionModel().isEmpty()){
+            setSelectedBook((Books) table.getSelectionModel().getSelectedItem());
+            StageController.loadStage("../Interfaces/Withdrow.fxml" , "Withdraw");
+        }
+        else {
+            selectAlert();
+        }
+    }
+
+    private void selectAlert(){
+        Alert alert = new Alert(Alert.AlertType.NONE , "" , ButtonType.OK);
+        alert.setTitle("warning");
+        alert.setContentText("please select one row");
+        alert.show();
     }
 }

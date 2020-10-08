@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="270.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddUserController">
    <children>
       <Label layoutX="90.0" layoutY="36.0" text="Add Student">
@@ -16,8 +15,8 @@
       </Label>
       <Label layoutX="36.0" layoutY="103.0" text="NIC Number" />
       <Label layoutX="36.0" layoutY="149.0" text="Student Name" />
-      <Button layoutX="135.0" layoutY="209.0" mnemonicParsing="false" text="Add" />
-      <TextField layoutX="137.0" layoutY="99.0" />
-      <TextField layoutX="137.0" layoutY="145.0" />
+      <Button layoutX="135.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#add" text="Add" />
+      <TextField fx:id="nicBox" layoutX="137.0" layoutY="99.0" />
+      <TextField fx:id="nameBox" layoutX="137.0" layoutY="145.0" />
    </children>
 </AnchorPane>

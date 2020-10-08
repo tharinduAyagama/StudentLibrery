@@ -15,7 +15,7 @@
       </Label>
       <Label layoutX="36.0" layoutY="103.0" text="Book Name" />
       <Label layoutX="36.0" layoutY="149.0" text="Number of Books" />
-      <Button layoutX="135.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#addBook" text="Add" />
+      <Button layoutX="135.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#add" text="Add" />
       <TextField fx:id="nameBox" layoutX="146.0" layoutY="99.0" />
       <TextField fx:id="countBox" layoutX="146.0" layoutY="145.0" />
    </children>

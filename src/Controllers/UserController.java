@@ -58,7 +58,6 @@ public class UserController {
     }
 
     private static ObservableList<User> getUserObjects(ResultSet rs) throws SQLException {
-
         ObservableList<User> users =  FXCollections.observableArrayList();
         while (rs.next()){
             users.add(setOneUser(rs));

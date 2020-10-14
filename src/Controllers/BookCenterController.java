@@ -60,7 +60,7 @@ public class BookCenterController {
     }
 
     public void addBook() throws IOException {
-        StageController.loadStage("../Interfaces/AddBook.fxml" , "Add");
+        StageController.loadStage("../Interfaces/AddBook.fxml" , "Add" ,table);
     }
 
     public void delete() throws SQLException {

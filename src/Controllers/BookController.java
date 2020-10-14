@@ -43,7 +43,11 @@ public class BookController {
         PreparedStatement pst = con.prepareStatement(getBook);
         pst.setInt(1,id);
         ResultSet rs = pst.executeQuery();
-        return setOneBook(rs);
+        Books book = new Books();
+        if(rs.next()){
+            book = setOneBook(rs);
+        }
+        return book;
     }
 
     private static ObservableList<Books> getBooksObjects(ResultSet rs) throws SQLException {
@@ -62,5 +66,19 @@ public class BookController {
         book.setInCount(rs.getInt("incount"));
         book.setOutCount(rs.getInt("outcount"));
         return book;
+    }
+
+    public static void updateToRecieve(int bookId) throws SQLException {
+        String updateTable = "UPDATE books SET incount=incount+1, outcount=outcount-1 WHERE bookid = ?";
+        PreparedStatement pst = con.prepareStatement(updateTable);
+        pst.setInt(1,bookId);
+        pst.execute();
+    }
+
+    public static void updateToWithdrowal(int bookId) throws SQLException {
+        String updateTable = "UPDATE books SET incount=incount-1, outcount=outcount+1 WHERE bookid = ?";
+        PreparedStatement pst = con.prepareStatement(updateTable);
+        pst.setInt(1,bookId);
+        pst.execute();
     }
 }

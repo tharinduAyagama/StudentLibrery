@@ -66,6 +66,5 @@ public class UserCenterController {
     private void deleteRow(int userID) throws SQLException {
         table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
         UserController.deleteUser(userID);
-
     }
 }

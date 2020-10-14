@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="233.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WithdrawController">
+<AnchorPane prefHeight="233.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddWithdrowalController">
    <children>
       <Label layoutX="111.0" layoutY="35.0" text="Withdraw">
          <font>

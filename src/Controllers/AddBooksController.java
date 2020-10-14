@@ -1,6 +1,7 @@
 package Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,5 +19,7 @@ public class AddBooksController{
         BookController.addBook(name , noOfBooks);
         Stage current = (Stage)nameBox.getScene().getWindow();
         current.close();
+        TableView tableView = (TableView) current.getUserData();
+        tableView.setItems(BookController.getAllBooks());
     }
 }

@@ -20,4 +20,8 @@ public class DashController {
         borderPane.setCenter(bookCenter);
     }
 
+    public void clickWithdrowals() throws IOException {
+        Parent withdrowCenter = FXMLLoader.load(getClass().getResource("../Interfaces/WithdrowCenter.fxml"));
+        borderPane.setCenter(withdrowCenter);
+    }
 }

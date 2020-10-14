@@ -1,6 +1,8 @@
 package Controllers;
 
 import Models.User;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -15,6 +17,8 @@ public class UserCenterController {
     private Button deleteButton;
     @FXML
     private TableView table;
+    @FXML
+    private TextField searchBox;
 
     public void initialize() throws SQLException {
         deleteButton.setDisable(true);
@@ -38,12 +42,30 @@ public class UserCenterController {
         nic.setCellValueFactory(cellData -> cellData.getValue().NICProperty());
         name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 
+        FilteredList<User> filteredList = new FilteredList<>(UserController.getAllUsers() , user -> true);
+        searchBox.textProperty().addListener((observable , aldValue , newValue)->{
+            filteredList.setPredicate(User->{
+                if(newValue==null||newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if(User.getNIC().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else if(User.getName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else return false;
+            });
+        });
+        SortedList<User> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedList);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setItems(UserController.getAllUsers());
     }
 
     public void addUser() throws IOException {
-        StageController.loadStage("../Interfaces/AddUser.fxml" , "Add");
+        StageController.loadStage("../Interfaces/AddUser.fxml" , "Add" ,table);
     }
 
     public void delete() throws SQLException {
@@ -64,7 +86,13 @@ public class UserCenterController {
     }
 
     private void deleteRow(int userID) throws SQLException {
-        table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
+        table.setItems(UserController.getAllUsers());
         UserController.deleteUser(userID);
+    }
+
+    public void enterToBox() {
+        searchBox.setTooltip(
+                new Tooltip("Search by NIC and name")
+        );
     }
 }

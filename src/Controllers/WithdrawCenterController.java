@@ -1,6 +1,8 @@
 package Controllers;
 
 import Models.Withdrowal;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,6 +16,8 @@ public class WithdrawCenterController {
     private TableView table;
     @FXML
     private Button recieveButton;
+    @FXML
+    private TextField searchBox;
 
     public void initialize() throws SQLException {
         recieveButton.setDisable(true);
@@ -34,8 +38,26 @@ public class WithdrawCenterController {
         nic.setCellValueFactory(cellData -> cellData.getValue().nicProperty());
         bookName.setCellValueFactory(cellData -> cellData.getValue().bookNameProperty());
 
+        FilteredList<Withdrowal> filteredList = new FilteredList<>(WithdrawController.getAllWithdrowal() , withdrowal -> true);
+        searchBox.textProperty().addListener((observable , aldValue , newValue)->{
+            filteredList.setPredicate(Withdrowal->{
+                if(newValue==null||newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if(Withdrowal.getNic().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else if(Withdrowal.getBookName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else return false;
+            });
+        });
+        SortedList<Withdrowal> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedList);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setItems(WithdrawController.getAllWithdrowal());
     }
 
     public void bookRecieve() throws SQLException {
@@ -57,8 +79,14 @@ public class WithdrawCenterController {
     }
 
     private void bookRecieved(int withdrawalId, int bookId) throws SQLException {
-        table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
+        table.setItems(WithdrawController.getAllWithdrowal());
         WithdrawController.removeWithdrow(withdrawalId);
         BookController.updateToRecieve(bookId);
+    }
+
+    public void enterToBox() {
+        searchBox.setTooltip(
+                new Tooltip("Search by NIC and name")
+        );
     }
 }

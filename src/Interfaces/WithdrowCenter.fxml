@@ -2,22 +2,38 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WithdrawCenterController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WithdrawCenterController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="500.0" prefWidth="700.0">
          <children>
+            <Label alignment="CENTER" text="Withdrowals" textFill="#345863">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="searchBox" onMouseEntered="#enterToBox" promptText="search" style="-fx-background-color: #a7e7fc;" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" top="10.0" />
+               </padding>
+            </HBox>
             <TableView fx:id="table" prefHeight="410.0" prefWidth="600.0">
               <columns>
               </columns>
             </TableView>
             <HBox alignment="CENTER">
                <children>
-                  <Button fx:id="recieveButton" mnemonicParsing="false" onMouseClicked="#bookRecieve" text="Recieve" textAlignment="CENTER" />
+                  <Button fx:id="recieveButton" mnemonicParsing="false" onMouseClicked="#bookRecieve" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Recieve Selected" textAlignment="CENTER" textFill="WHITE" />
                </children>
                <padding>
                   <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />

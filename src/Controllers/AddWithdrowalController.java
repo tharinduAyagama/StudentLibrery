@@ -5,6 +5,7 @@ import Models.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -25,6 +26,8 @@ public class AddWithdrowalController {
             BookController.updateToWithdrowal(book.getBookId());
             Stage current = (Stage)nicBox.getScene().getWindow();
             current.close();
+            TableView tableView = (TableView) current.getUserData();
+            tableView.setItems(BookController.getAllBooks());
         }
         else {
             Alert alert = new Alert(Alert.AlertType.NONE ,"" , ButtonType.OK);

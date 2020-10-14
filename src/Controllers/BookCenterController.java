@@ -1,6 +1,9 @@
 package Controllers;
 
 import Models.Books;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,6 +20,8 @@ public class BookCenterController {
     private Button deleteButton;
     @FXML
     private TableView table;
+    @FXML
+    private TextField searchBox;
 
     private static Books selectedBook;
 
@@ -55,8 +60,23 @@ public class BookCenterController {
         inCount.setCellValueFactory(cellData -> cellData.getValue().inCountProperty().asObject());
         outCount.setCellValueFactory(cellData -> cellData.getValue().outCountProperty().asObject());
 
+        FilteredList<Books> filteredList = new FilteredList<>(BookController.getAllBooks() , books -> true);
+        searchBox.textProperty().addListener((observable , aldValue , newValue)->{
+            filteredList.setPredicate(Books->{
+                if(newValue==null||newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if(Books.getBookName().toLowerCase().indexOf(lowerCaseFilter)!=-1){
+                    return true;
+                }
+                else return false;
+            });
+        });
+        SortedList<Books> sortedList = new SortedList<>(filteredList);
+        sortedList.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedList);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        table.setItems(BookController.getAllBooks());
     }
 
     public void addBook() throws IOException {
@@ -78,14 +98,14 @@ public class BookCenterController {
     }
 
     private void deleteRow(int bookId) throws SQLException {
-        table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
+        table.setItems(BookController.getAllBooks());
         BookController.deleteBook(bookId);
     }
 
     public void withdrawBook() throws IOException {
         if(!table.getSelectionModel().isEmpty()){
             setSelectedBook((Books) table.getSelectionModel().getSelectedItem());
-            StageController.loadStage("../Interfaces/Withdrow.fxml" , "Withdraw");
+            StageController.loadStage("../Interfaces/Withdrow.fxml" , "Withdraw" , table);
         }
         else {
             selectAlert();

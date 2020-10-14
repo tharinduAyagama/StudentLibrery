@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="270.0" prefWidth="332.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddBooksController">
+<AnchorPane prefHeight="270.0" prefWidth="340.0" style="-fx-background-color: #46a1bd;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddBooksController">
    <children>
-      <Label layoutX="104.0" layoutY="36.0" text="Add Book">
+      <Label layoutX="104.0" layoutY="36.0" text="Add Book" textFill="#0c2a51">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="36.0" layoutY="103.0" text="Book Name" />
-      <Label layoutX="36.0" layoutY="149.0" text="Number of Books" />
-      <Button layoutX="135.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#add" text="Add" />
-      <TextField fx:id="nameBox" layoutX="146.0" layoutY="99.0" />
-      <TextField fx:id="countBox" layoutX="146.0" layoutY="145.0" />
+      <Label layoutX="36.0" layoutY="103.0" text="Book Name" textFill="#0c2a51" />
+      <Label layoutX="36.0" layoutY="149.0" text="Number of Books" textFill="#0c2a51" />
+      <Button layoutX="146.0" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#add" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Add" textFill="WHITE" />
+      <TextField fx:id="nameBox" layoutX="146.0" layoutY="99.0" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #a7e7fc;" />
+      <TextField fx:id="countBox" layoutX="146.0" layoutY="145.0" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #a7e7fc;" />
    </children>
 </AnchorPane>

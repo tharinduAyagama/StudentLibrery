@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserCenterController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.UserCenterController">
    <children>
-      <VBox layoutX="-3.0" layoutY="-1.0" prefHeight="400.0" prefWidth="606.0" spacing="50.0">
+      <VBox layoutX="-3.0" layoutY="-1.0" prefHeight="500.0" prefWidth="700.0">
          <children>
+            <Label text="Students" textFill="#345863">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="searchBox" onMouseEntered="#enterToBox" promptText="serch" style="-fx-background-color: #a7e7fc;" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" top="10.0" />
+               </padding>
+            </HBox>
             <TableView fx:id="table">
               <columns>
               </columns>
             </TableView>
-            <HBox alignment="CENTER" spacing="50.0">
+            <HBox alignment="CENTER" prefHeight="142.0" prefWidth="644.0" spacing="50.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#addUser" text="Add Student" />
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#delete" text="Remove Selected Student" />
+                  <Button mnemonicParsing="false" onMouseClicked="#addUser" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Add Student" textFill="WHITE" />
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onMouseClicked="#delete" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Remove Selected Student" textFill="WHITE" />
                </children>
+               <padding>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </padding>
             </HBox>
          </children>
       </VBox>

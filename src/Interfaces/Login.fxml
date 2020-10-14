@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="228.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+<AnchorPane prefHeight="228.0" prefWidth="239.0" style="-fx-background-color: #46a1bd;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
    <children>
 
-      <Label layoutX="131.0" layoutY="33.0" text="Login">
+      <Label layoutX="131.0" layoutY="33.0" text="Login" textFill="#0c2a51">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="userNameBox" layoutX="138.0" layoutY="100.0" />
-      <PasswordField fx:id="passwordBox" layoutX="138.0" layoutY="153.0" />
-      <Label layoutX="46.0" layoutY="104.0" text="Username" />
-      <Label layoutX="47.0" layoutY="157.0" text="Password" />
-      <Button layoutX="137.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#loginAction" text="Login" />
+      <TextField fx:id="userNameBox" layoutX="138.0" layoutY="100.0" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #a7e7fc;" />
+      <PasswordField fx:id="passwordBox" layoutX="138.0" layoutY="153.0" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #a7e7fc;" />
+      <Label layoutX="46.0" layoutY="104.0" text="Username" textFill="#0c2a51" />
+      <Label layoutX="47.0" layoutY="157.0" text="Password" textFill="#0c2a51" />
+      <Button layoutX="137.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#loginAction" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Login" textFill="WHITE" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

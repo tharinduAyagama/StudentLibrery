@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #46a1bd;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DashController">
    <top>
-      <Label id="headdings" stylesheets="@../Stylesheets/Commen.css" text="Student Library" BorderPane.alignment="CENTER">
+      <Label id="headdings" stylesheets="@../Stylesheets/Commen.css" text="Student Library" textFill="#0c2a51" BorderPane.alignment="CENTER">
          <font>
             <Font size="30.0" />
          </font>
@@ -18,17 +18,17 @@
    <left>
       <VBox spacing="16.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="booksButton" mnemonicParsing="false" onMouseClicked="#clickBooks" prefHeight="26.0" prefWidth="100.0" text="Books">
+            <Button fx:id="booksButton" mnemonicParsing="false" onMouseClicked="#clickBooks" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Books" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="8.0" top="8.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="students" mnemonicParsing="false" onMouseClicked="#clickStudents" prefHeight="26.0" prefWidth="102.0" text="Students">
+            <Button fx:id="students" mnemonicParsing="false" onMouseClicked="#clickStudents" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Students" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="8.0" top="8.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="withdrowals" mnemonicParsing="false" onMouseClicked="#clickWithdrowals" prefHeight="26.0" prefWidth="102.0" text="Withdrowals">
+            <Button fx:id="withdrowals" mnemonicParsing="false" onMouseClicked="#clickWithdrowals" prefWidth="160.0" style="-fx-background-color: #2a6b80;" text="Withdrowals" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="8.0" top="8.0" />
                </VBox.margin>
